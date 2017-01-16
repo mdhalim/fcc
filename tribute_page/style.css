@@ -5,15 +5,15 @@
   top: 0px;
   left: 0px;
   height: 50%;
-  background-image: url("JAAGA.png");
+  background: url(JAAGA.png);
   background-repeat: no-repeat;
   background-size: cover;
 }
 /* creating transparent box for adding a paragraph */
 
 .transbox {
-  margin: 100px;
-
+  margin-left: 20px;
+  margin-right: 20px;
   background-color: #ffffff;
   border: 1px solid black;
   opacity: 0.6;
@@ -24,15 +24,20 @@
     font-weight: bold;
     color: #000000;
 }
-.img:hover {
-    opacity: 0.5;
-    filter: alpha(opacity=50); /* For IE8 and earlier */
-}
 
+.logo{
+  width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+/* properties for the main jaaga logo */
 .jaaga{
    margin-top: 5px;
+   max-width: 500px;
+   margin-left: auto;
+   margin-right: auto;
+   background-color: red;
 }
-
 
 .bottom {
     position: fixed;
@@ -46,3 +51,15 @@
 .pics{
   margin-left: 100px;
 }
+/* adding a hover effect for images on mouseover
+*/
+.pic{
+  opacity: 1;
+  filter: alpha(opacity=100);
+ }
+.pic:hover { -moz-box-shadow: 0 0 10px #ccc;
+   -webkit-box-shadow: 0 0 10px #ccc;
+    box-shadow: 0 0 10px #ccc;
+    opacity: 0.3;
+    filter: alpha(opacity=60);
+  }
