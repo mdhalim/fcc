@@ -1,0 +1,48 @@
+/* dividing the window into 2 halves, top and bottom */
+.top {
+  width: 100%;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  height: 50%;
+  background: url(jaaga.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+/* creating transparent box for adding a paragraph */
+
+.transbox {
+  margin: 100px;
+
+  background-color: #ffffff;
+  border: 1px solid black;
+  opacity: 0.6;
+  filter: alpha(opacity=60);
+}
+.transbox p {
+    margin: 5%;
+    font-weight: bold;
+    color: #000000;
+}
+.img:hover {
+    opacity: 0.5;
+    filter: alpha(opacity=50); /* For IE8 and earlier */
+}
+
+.jaaga{
+   margin-top: 5px;
+}
+
+
+.bottom {
+    position: fixed;
+    bottom: 0;
+    height: 50%;
+    width: 100%;
+    left: 0px;
+    background-color: orange;
+	}
+
+.pics{
+  margin-left: 100px;
+}
