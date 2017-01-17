@@ -24,6 +24,7 @@ body {
 .content {
     width: 80%;
     position: absolute;
+    margin-left: 5px;
     left: 20%;
     top: 0px;
 }
@@ -83,6 +84,7 @@ h2 {
     text-transform: none;
     font-weight: 100;
     margin-bottom: 0;
+    margin-left: 5px;
 }
 
 .projects {
@@ -90,6 +92,7 @@ h2 {
     margin-top: -15px;
     margin-bottom: 20px;
     height: 300px;
+
 }
 
 .project-details li {
