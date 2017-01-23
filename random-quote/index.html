@@ -1,16 +1,58 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <meta charset="utf-8">
     <title>Random Quote Machine</title>
-    <<meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-<style>
-</style>
+    <script>
+  // AJAX request to set headers
+           function getQuote(){
+           $.ajax({
+           headers: {
+             "X-Mashape-Key": "CG1m1O5YpymshLWEmeNelt2aZQJkp1LmlTtjsndAAHvFzku0lS",
+             Accept: "application/json",
+             "Content-Type": "application/x-www-form-urlencoded"
+           },
+           url: 'https://andruxnet-random-famous-quotes.p.mashape.com/',
+           success: function (response) {
+             var r = JSON.parse(response);
+             $('#current-quote').text(r.quote); //setting the fetched quote to the container for quote
+             $('#current-author').text(r.author); //setting the fetched author to the container for author
+            //tweeting the status
+             $("#tweet").attr("href", "http://twitter.com/home/?status=" + r.quote + ' (' + r.author + ')');
+             }
+         });
+       }
+
+       $(document).ready(function(){
+           getQuote();
+           $('#generate').on('click', function() { console.log('call');
+             getQuote()
+           });
+
+        });
+    </script>
+    <style>
+     body{
+       background-color: #CDDC39;
+       font-family: "Lobster", "Comic Sans", cursive;
+
+     }
+     .jumbotron{
+       background-color: white;
+       margin-left: 20em;
+       margin-right: 20em;
+
+     }
+     h1{
+       font-size: 30;
+       font-weight: bold;
+     }
+    </style>
 </head>
 
 <body>
@@ -22,17 +64,18 @@
         </div>
         <div class="jumbotron">
             <div class="quote-display">
-              <h2 class="quote-text text-center" id="quote">nUser Story: I can click a button to show me a new random quote.
-ever settle</h2>
-              <h4 class="text-right" id="author">- oneplus</h4>
+              <h2 class="quote-text text-center" id="current-quote"></h2>
+              <h4 class="text-right" id="current-author"></h4>
             </div>
-
+            <!--putting the buttons in two rows  -->
             <div class="row">
             <div class="col-md-11">
                 <button type="button" class="btn btn-primary btn-md text-left" id="generate">Get A Quote</button>
             </div>
-            <div class="col-md-1">
-                <button type="button" class="btn btn-primary btn-md right-button" id="tweet"><i class="fa fa-twitter" aria-hidden="true"></i></button>
+            <div class="col-md-1 text-right">
+              <!--  adding a tweet button with the id:tweet-->
+                <a class= "btn btn-primary btn-md" id="tweet" href="#" role="button" target="_blank">
+                <i class="fa fa-twitter" aria-hidden="true"></i></a>
             </div>
       </div>
       </div>
