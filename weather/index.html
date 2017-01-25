@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Weather App</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+    <script>
+        // the weather function contains the Navigtor to access the longitude and latitude
+        function weather() {
+            var lon;
+            var lat;
+            if (navigator.geolocation) { //getting the current user location
+                navigator.geolocation.getCurrentPosition(function(position) {
+                    lat = position.coords.latitude; //storing the latitude
+                    console.log(lat)
+                    lon = position.coords.longitude; //storing the longitude
+                    //ajax request to weather API
+                    $.ajax({
+                        url: "http://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + lon + "&appid=8d3a418b0ed4c780e15796ea4f69949b",
+                        success: function(response) {
+                            console.log(response);
+                            $('#weather_con').text(response.weather[0].description);
+                            $('#current_temp').text(response.main.temp);
+                            $('#max_temp').text(response.main.temp_max);
+                            $('#min_temp').text(response.main.temp_min);
+
+                        }
+                    });
+
+                });
+            }
+
+
+        }
+        //the main function to call the weather function
+        $(document).ready(function() {
+
+            weather();
+        });
+    </script>
+</head>
+
+<body>
+    <h2 text-center>weather machine</h2>
+    <h2 id="weather_con"></h2>
+    <h2 id="current_temp"></h2>
+    <h2 id="max_temp"></h2>
+    <h2 id="min_temp"></h2>
+</body>
+
+</html>
